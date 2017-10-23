@@ -3,8 +3,7 @@ package main
 import (
 	"app/route"
 	"app/handler"
-
-	// "github.com/labstack/echo/middleware"
+	"app/log"
 )
 
 func main() {
@@ -15,6 +14,8 @@ func main() {
 	// router.Use(middleware.Recover())
 
 	router.HTTPErrorHandler = handler.JSONErrorHandler
+
+	log.AppLog.Info("サーバーが起動しました")
 
 	router.Start(":8080")
 	

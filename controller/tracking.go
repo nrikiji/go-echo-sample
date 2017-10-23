@@ -24,6 +24,8 @@ func GetTraking() echo.HandlerFunc {
 			Name: "test2",
 		}}
 
+		return echo.NewHTTPError(http.StatusInternalServerError, "test")
+
 		// エラーを投げる
 		//return errors.New("MyError")
 		return &MyErr.SystemError{Message: "エラーだよ"}
