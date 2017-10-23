@@ -10,7 +10,7 @@ func Init() *echo.Echo {
 
 	e := echo.New()
 
-	e.GET("/traking", controller.GetTraking())
+	e.GET("/tracking", controller.GetTraking())
 
 	return e
 }
