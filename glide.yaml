@@ -1,0 +1,10 @@
+package: app
+import:
+- package: github.com/labstack/echo
+  version: ^3.2.3
+  subpackages:
+  - '...'
+- package: github.com/labstack/gommon
+  version: ^0.2.3
+- package: github.com/dgrijalva/jwt-go
+  version: ^3.1.0
