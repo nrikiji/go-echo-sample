@@ -8,3 +8,5 @@ import:
   version: ^0.2.3
 - package: github.com/dgrijalva/jwt-go
   version: ^3.1.0
+- package: github.com/sirupsen/logrus
+  version: ^1.0.3
