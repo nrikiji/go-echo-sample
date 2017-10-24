@@ -12,3 +12,5 @@ import:
   version: ^1.0.3
 - package: github.com/jinzhu/gorm
   version: ^1.0.0
+  subpackages:
+  - dialects/mysql
