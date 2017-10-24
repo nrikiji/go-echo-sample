@@ -5,9 +5,13 @@ import (
 	"app/handler"
 	"app/log"
 	"app/model"
+	"app/config"
+	"flag"
 )
 
 func main() {
+
+	setConfig()
 
 	router := route.Init()
 
@@ -22,4 +26,13 @@ func main() {
 
 	router.Start(":8080")
 	
+}
+
+func setConfig() {
+	env := "development"
+	flag.Parse()
+	if args := flag.Args(); 0 < len(args) && args[0] == "pro" {
+		env = "production"
+	}
+	config.SetDB(env)
 }
