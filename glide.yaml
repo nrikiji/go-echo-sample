@@ -14,3 +14,4 @@ import:
   version: ^1.0.0
   subpackages:
   - dialects/mysql
+- package: gopkg.in/yaml.v2
