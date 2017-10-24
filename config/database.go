@@ -8,13 +8,15 @@ import(
 var Database map[interface{}]interface{}
 
 func SetDB(env string) {
+	
 	yml, err := ioutil.ReadFile("src/app/config/database.yml")
 	if err != nil {
 		panic(err)
 	}
 
 	t := make(map[interface{}]interface{})
-	yaml.Unmarshal([]byte(yml), &t)
-	conf := t[env].(map[interface {}]interface {})
-	Database = conf
+	_ = yaml.Unmarshal([]byte(yml), &t)
+	conn := t[env].(map[interface {}]interface {})
+
+	Database = conn
 }
