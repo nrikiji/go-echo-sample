@@ -8,7 +8,7 @@ import(
 var Database map[interface{}]interface{}
 
 func SetDB(env string) {
-	yml, err := ioutil.ReadFile("src/app/config/db.yml")
+	yml, err := ioutil.ReadFile("src/app/config/database.yml")
 	if err != nil {
 		panic(err)
 	}
