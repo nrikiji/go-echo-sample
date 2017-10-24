@@ -4,6 +4,7 @@ import (
 	"app/route"
 	"app/handler"
 	"app/log"
+	"app/model"
 )
 
 func main() {
@@ -12,6 +13,8 @@ func main() {
 
 	// router.Use(middleware.Logger())
 	// router.Use(middleware.Recover())
+
+	model.Init()
 
 	router.HTTPErrorHandler = handler.JSONErrorHandler
 

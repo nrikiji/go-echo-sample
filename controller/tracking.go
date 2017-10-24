@@ -1,40 +1,25 @@
 package controller
 
 import(
-	MyErr "app/error"
 	"net/http"
-	// "errors"
+	"app/model"
 	
 	"github.com/labstack/echo"
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
-
-type Ad struct {
-	Id int `json:"id"`
-	Name string `json:"name"`
-}
 
 func GetTraking() echo.HandlerFunc {
 	return func(c echo.Context) error {
 
-		ads := []Ad{{
-			Id: 1,
-			Name: "test1",
-		}, {
-			Id: 2,
-			Name: "test2",
-		}}
+		var campaign model.Campaign
+		db := model.GetConnection()
+		data := db.First(&campaign, 1)
 
-		return echo.NewHTTPError(http.StatusInternalServerError, "test")
-
-		// エラーを投げる
-		//return errors.New("MyError")
-		return &MyErr.SystemError{Message: "エラーだよ"}
-
-		// テキストを返す
-		// return c.String(http.StatusOK, "traking")
-
-		// JSONを返す
-		return c.JSON(http.StatusOK, ads)
-		
+		if data.Error == gorm.ErrRecordNotFound {
+			return echo.NewHTTPError(http.StatusNotFound, "Not Found")
+		} else {
+			return c.JSON(http.StatusOK, data)
+		}
 	}
 }
