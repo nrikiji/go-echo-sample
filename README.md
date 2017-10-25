@@ -7,6 +7,12 @@ goとechoを使った簡単なapiサーバーのサンプルコード。
 
 ### 操作
 
+ビルド
+
+```
+$ go build -o bin/server src/app/main.go
+```
+
 起動
 
 ```
