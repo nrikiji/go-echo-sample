@@ -15,3 +15,7 @@ import:
   subpackages:
   - dialects/mysql
 - package: gopkg.in/yaml.v2
+- package: github.com/lestrrat/go-server-starter
+  version: ^0.0.2
+  subpackages:
+  - cmd/start_server

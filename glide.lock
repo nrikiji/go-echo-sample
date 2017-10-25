@@ -1,5 +1,5 @@
-hash: 018d9cedb24d4107b9652eb7a8c8cdfc94e7cea2b64e94adb971cc8e4c113bd2
-updated: 2017-10-24T20:48:58.802637865+09:00
+hash: e495b68521790b94e4e3b9eb624e9eee82acf2b95937439c92df67b35e027a37
+updated: 2017-10-25T11:25:20.60632158+09:00
 imports:
 - name: github.com/dgrijalva/jwt-go
   version: dbeaa9332f19a944acb5736b4456cfcc02140e29
@@ -20,6 +20,11 @@ imports:
   subpackages:
   - color
   - log
+- name: github.com/lestrrat/go-server-starter
+  version: 88699d57aeee0276b4198e135883ff24b88a742f
+  subpackages:
+  - cmd/start_server
+  - listener
 - name: github.com/mattn/go-colorable
   version: ad5389df28cdac544c99bd7b9161a0b5b6ca9d1b
 - name: github.com/mattn/go-isatty
