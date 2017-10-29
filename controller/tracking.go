@@ -1,8 +1,8 @@
 package controller
 
 import(
-	"net/http"
 	"app/model"
+	"net/http"
 	
 	"github.com/labstack/echo"
 	"github.com/jinzhu/gorm"
