@@ -1,7 +1,6 @@
-package model
+package db
 
 import(
-	"app/log"
 	"app/config"
 	"fmt"
 	"github.com/jinzhu/gorm"
@@ -22,8 +21,6 @@ func Init() {
 	db, err = gorm.Open("mysql", user + ":" + password + "@/" + dbname + "?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		panic(fmt.Sprintf("[Error]: %s", err))
-	} else {
-		log.AppLog.Info(fmt.Sprintf("%s", db))
 	}
 }
 

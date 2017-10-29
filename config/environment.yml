@@ -4,8 +4,16 @@ development:
     password: tech0827
     name: echo_dev
 
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
 production:
   db:
     user: root
     password: tech0827
     name: echo_dev  
+
+  redis:
+    host: 127.0.0.1
+    port: 6379

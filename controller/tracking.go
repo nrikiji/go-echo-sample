@@ -1,7 +1,7 @@
 package controller
 
 import(
-	"app/model"
+	"app/db"
 	"net/http"
 	
 	"github.com/labstack/echo"
@@ -12,8 +12,8 @@ import(
 func GetTraking() echo.HandlerFunc {
 	return func(c echo.Context) error {
 
-		var campaign model.Campaign
-		db := model.GetConnection()
+		var campaign db.Campaign
+		db := db.GetConnection()
 		data := db.First(&campaign, 1)
 
 		if data.Error == gorm.ErrRecordNotFound {

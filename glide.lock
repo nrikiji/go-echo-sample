@@ -1,8 +1,12 @@
-hash: e495b68521790b94e4e3b9eb624e9eee82acf2b95937439c92df67b35e027a37
-updated: 2017-10-25T11:25:20.60632158+09:00
+hash: 072f49596163f7ab90e3e55b7fb0a80d25d9531c8f453305be86555b6901cb18
+updated: 2017-10-29T23:41:56.153205305+09:00
 imports:
 - name: github.com/dgrijalva/jwt-go
   version: dbeaa9332f19a944acb5736b4456cfcc02140e29
+- name: github.com/garyburd/redigo
+  version: 34a326de1fea52965fa5ad664d3fc7163dd4b0a1
+  subpackages:
+  - redis
 - name: github.com/go-sql-driver/mysql
   version: fade21009797158e7b79e04c340118a9220c6f9e
 - name: github.com/jinzhu/gorm
@@ -42,7 +46,7 @@ imports:
   - acme/autocert
   - ssh/terminal
 - name: golang.org/x/sys
-  version: a1a1f1746d156bbc9954f29134b20ed4ce2752f1
+  version: 661970f62f5897bc0cd5fdca7e087ba8a98a8fa1
   subpackages:
   - unix
   - windows

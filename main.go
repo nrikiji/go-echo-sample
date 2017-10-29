@@ -4,7 +4,8 @@ import (
 	"app/route"
 	"app/handler"
 	// "app/log"
-	"app/model"
+	"app/db"
+	"app/redis"
 	"app/config"
 	"context"
 	// "net/http"
@@ -31,7 +32,9 @@ func main() {
   }
 	e.Listener = listeners[0]
 
-	model.Init()
+	db.Init()
+	redis.Init()
+	
 	e.HTTPErrorHandler = handler.JSONErrorHandler
 
 	go func() {

@@ -14,12 +14,18 @@ type Environment struct {
 
 type Conf struct {
 	Database Database `yaml:"db"`
+	Redis Redis `yaml:"redis"`
 }
 
 type Database struct {
 	User string `yaml:"user"`
 	Password string `yaml:"password"`
 	Name string `yaml:"name"`
+}
+
+type Redis struct {
+	Host string `yaml:"host"`
+	Port string `yaml:"port"`
 }
 
 func SetEnvironment(env string) {
