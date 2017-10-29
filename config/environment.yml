@@ -1,0 +1,11 @@
+development:
+  db:
+    user: root
+    password: tech0827
+    name: echo_dev
+
+production:
+  db:
+    user: root
+    password: tech0827
+    name: echo_dev  

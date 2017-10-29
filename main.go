@@ -58,5 +58,5 @@ func setConfig() {
 	if args := flag.Args(); 0 < len(args) && args[0] == "pro" {
 		env = "production"
 	}
-	config.SetDB(env)
+	config.SetEnvironment(env)
 }

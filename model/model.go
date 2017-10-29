@@ -12,11 +12,12 @@ var db *gorm.DB
 var err error
 
 func Init() {
-	c := config.Database
-
-	user := c["user"].(string)
-	password := c["password"].(string)
-	dbname := c["db"].(string)
+	
+	c := config.Config.Database
+	
+	user := c.User
+	password := c.Password
+	dbname := c.Name
 	
 	db, err = gorm.Open("mysql", user + ":" + password + "@/" + dbname + "?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
