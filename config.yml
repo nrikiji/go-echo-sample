@@ -1,0 +1,17 @@
+test:
+  dialect: mysql
+  datasource: root:@tcp(127.0.0.1:3306)/go-echo-example-test?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=true
+  dir: migrations
+  table: migrations
+
+development:
+  dialect: mysql
+  datasource: root:@tcp(localhost:3306)/go-echo-example?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=true
+  dir: migrations
+  table: migrations
+
+production:
+  dialect: mysql
+  datasource: root:@tcp(localhost:3306)/go-echo-example?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=true
+  dir: migrations
+  table: migrations

@@ -1,0 +1,37 @@
+name: Go
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD:
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+          MYSQL_DATABASE: go-echo-example-test
+        ports:
+          - 3306:3306
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
+
+      - name: Build
+        run: go build -v ./...
+
+      - name: Install sql-migrate
+        run: |
+          go install github.com/rubenv/sql-migrate/...@latest
+          export PATH=$GOPATH/bin:$PATH
+
+      - name: Setup of test database
+        run: sql-migrate up -env test --config config.yml
+
+      - name: Test
+        run: go test -v ./...

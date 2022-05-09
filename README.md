@@ -1,39 +1,51 @@
+# go-echo-starter
 
-# go-echo-sample
+`go、echo`で毎回行っている作業や設定をあらかじめテンプレート化したプロジェクトです。
 
-goとechoを使った簡単なapiサーバーのサンプルコード。
+`go`のバージョンは`1.18`
 
-動作確認バージョンはgo1.8+
+主に含まれていることは以下のとおり。
 
-### 操作
+- `sql-migrate`によるマイグレーション
+- `firebase auth`による認証
+- `github actions`でのテスト
+- `development`、`production`ごとに設定ファイルを切り替える
 
-ビルド
+## セットアップ手順
 
-```
-$ go build -o bin/server src/app/main.go
-```
-
-起動
-
-```
-$ start_server --port 8080 --pid-file app.pid -- ./bin/server
-```
-
-再起動　
+### プロジェクトのクローン
 
 ```
-$ kill -HUP `cat app.pid`
+$ git clone https://github.com/nrikiji/go-echo-starter
 ```
 
-停止  
+### `config.yml`の編集
 
-```
-$ kill -TERM `cat app.pid`
+DB 設定を環境に合わせて更新
+
+### マイグレーション実行
+
+```bash
+# 開発環境
+$ sql-migrate up -env development -config config.yml
+
+# テスト環境
+$ sql-migrate up -env test -config config.yml
 ```
 
-### start_server
+### `firebase`設定ファイルの追加
 
-インストール
-```
-go get github.com/lestrrat/go-server-starter/cmd/start_server
+`firebase`コンソールから`firebase_secret_key.json`をダウンロードしてプロジェクトルートに追加（`git`管理対象外）
+
+## 起動
+
+```bash
+# 開発
+$ go run server.go
+
+# テスト
+$ go test ./...
+
+# ビルド
+$ go build -o server .
 ```

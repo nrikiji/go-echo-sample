@@ -1,0 +1,17 @@
+- id: 1
+  firebase_uid: "ValidUID1"
+  name: "User1"
+  created_at: RAW=NOW()
+  updated_at: RAW=NOW()
+
+- id: 2
+  firebase_uid: "ValidUID2"
+  name: "User2"
+  created_at: RAW=NOW()
+  updated_at: RAW=NOW()
+
+- id: 3
+  firebase_uid: "ValidUID3"
+  name: "User3"
+  created_at: RAW=NOW()
+  updated_at: RAW=NOW()
