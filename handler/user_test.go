@@ -166,7 +166,7 @@ func TestLoginUserNotFound(t *testing.T) {
 func TestUpdateUserSuccess(t *testing.T) {
 	setup()
 	reqJSON := `{"name":"UpdateUser1"}`
-	authMiddleware := middleware.AuthMiddleware(h.authStore, h.dataStore)
+	authMiddleware := middleware.AuthMiddleware(h.authStore, h.userStore)
 	req := httptest.NewRequest(echo.PUT, "/api/users", strings.NewReader(reqJSON))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	req.Header.Set(echo.HeaderAuthorization, "Bearer: ValidToken1")
@@ -187,7 +187,7 @@ func TestUpdateUserSuccess(t *testing.T) {
 func TestUpdateUserUnauthorized(t *testing.T) {
 	setup()
 	reqJSON := `{"name":"UpdateUser1"}`
-	authMiddleware := middleware.AuthMiddleware(h.authStore, h.dataStore)
+	authMiddleware := middleware.AuthMiddleware(h.authStore, h.userStore)
 	req := httptest.NewRequest(echo.PUT, "/api/users", strings.NewReader(reqJSON))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	req.Header.Set(echo.HeaderAuthorization, "Bearer: InValidToken")

@@ -4,15 +4,15 @@ import "go-echo-starter/store"
 
 type Handler struct {
 	authStore store.AuthStore
-	dataStore store.DataStore
+	userStore store.UserStore
 }
 
 func NewHandler(
 	as store.AuthStore,
-	ds store.DataStore,
+	us store.UserStore,
 ) *Handler {
 	return &Handler{
 		authStore: as,
-		dataStore: ds,
+		userStore: us,
 	}
 }

@@ -14,7 +14,7 @@ type usersResponse struct {
 }
 
 func (h *Handler) getUsers(c echo.Context) error {
-	users, err := h.dataStore.AllUsers()
+	users, err := h.userStore.All()
 	if err != nil {
 		return err
 	}
@@ -27,7 +27,7 @@ type userResponse struct {
 
 func (h *Handler) getUser(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
-	user, err := h.dataStore.FindUserByID(id)
+	user, err := h.userStore.FindByID(id)
 
 	if err != nil {
 		return err
@@ -64,7 +64,7 @@ func (h *Handler) registerUser(c echo.Context) error {
 		return c.JSON(http.StatusUnprocessableEntity, nil)
 	}
 
-	user, err := h.dataStore.FindUserByUid(uid)
+	user, err := h.userStore.FindByUid(uid)
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, nil)
@@ -77,7 +77,7 @@ func (h *Handler) registerUser(c echo.Context) error {
 		Name:        params.Name,
 	}
 
-	if err := h.dataStore.RegisterUser(user); err != nil {
+	if err := h.userStore.Register(user); err != nil {
 		return c.JSON(http.StatusInternalServerError, nil)
 	}
 
@@ -99,7 +99,7 @@ func (h *Handler) loginUser(c echo.Context) error {
 		return c.JSON(http.StatusUnprocessableEntity, nil)
 	}
 
-	user, err := h.dataStore.FindUserByUid(uid)
+	user, err := h.userStore.FindByUid(uid)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, nil)
 	} else if user == nil {
@@ -138,7 +138,7 @@ func (h *Handler) updateUser(c echo.Context) error {
 	user := u.(*model.User)
 	user.Name = params.Name
 
-	if err := h.dataStore.UpdateUser(user); err != nil {
+	if err := h.userStore.Update(user); err != nil {
 		return c.JSON(http.StatusInternalServerError, nil)
 	}
 

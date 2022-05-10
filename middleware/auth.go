@@ -9,7 +9,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func AuthMiddleware(as store.AuthStore, ds store.DataStore) echo.MiddlewareFunc {
+func AuthMiddleware(as store.AuthStore, us store.UserStore) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 
@@ -25,7 +25,7 @@ func AuthMiddleware(as store.AuthStore, ds store.DataStore) echo.MiddlewareFunc 
 				return c.JSON(http.StatusUnauthorized, nil)
 			}
 
-			user, err := ds.FindUserByUid(uid)
+			user, err := us.FindByUid(uid)
 
 			if err != nil {
 				return c.JSON(http.StatusInternalServerError, nil)

@@ -57,7 +57,7 @@ func setup() {
 	as := store.NewAuthStore(client)
 
 	d := db.New(t)
-	us := store.NewDataStore(d)
+	us := store.NewUserStore(d)
 
 	h = NewHandler(*as, *us)
 }
