@@ -1,4 +1,4 @@
-# go-echo-starter
+# go-echo-sample
 
 `go、echo`で毎回行っている作業や設定をあらかじめテンプレート化したプロジェクトです。
 
