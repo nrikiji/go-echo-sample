@@ -37,9 +37,9 @@ func main() {
 	as := store.NewAuthStore(client)
 
 	d := db.New(env.NewAppEnv())
-	us := store.NewUserStore(d)
+	ds := store.NewDataStore(d)
 
-	h := handler.NewHandler(*as, *us)
+	h := handler.NewHandler(*as, *ds)
 	h.Register(api)
 	e.Logger.Fatal(e.Start(":8000"))
 }

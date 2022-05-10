@@ -7,7 +7,7 @@ import (
 )
 
 func (h *Handler) Register(api *echo.Group) {
-	auth := middleware.AuthMiddleware(h.authStore, h.userStore)
+	auth := middleware.AuthMiddleware(h.authStore, h.dataStore)
 
 	users := api.Group("/users")
 	users.GET("", h.getUsers)
