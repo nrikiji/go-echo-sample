@@ -15,4 +15,7 @@ func (h *Handler) Register(api *echo.Group) {
 	users.POST("/login", h.loginUser)
 	users.POST("/register", h.registerUser)
 	users.PUT("", h.updateUser, auth)
+
+	api.GET("/posts", h.getPosts)
+	api.PATCH("/posts/:id", h.updatePost, auth)
 }
